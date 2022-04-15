@@ -8,7 +8,7 @@ export default function Timetable({ time, subject, classroom }) {
         borderWidth: 2,
         borderColor: "#1232",
         width: "100%",
-        height: 45,
+        height: 45
       }}
     >
       <Text style={[styles.text, {position: "absolute",left:1}]}>{time}</Text>
