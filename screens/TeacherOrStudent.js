@@ -58,7 +58,7 @@ export default class TeacherOrStudent extends React.Component {
         <TouchableOpacity
           style={styles.button}
           onPress={() => {
-            this.props.navigation.navigate("abc");
+            this.props.navigation.navigate("RegisterScreen");
           }}
         >
           <Text style={styles.buttonText}>Register</Text>
