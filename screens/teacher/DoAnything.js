@@ -33,13 +33,13 @@ export default function DoAnything(props) {
         <TouchableOpacity
           style={styles.button}
           onPress={() => {
-            props.navigation.navigate("Homework", {
+            props.navigation.navigate("SetTimetable", {
               school: props.route.params.school,
               user: props.route.params.user,
             });
           }}
         >
-          <Text style={styles.text}>Give homework</Text>
+          <Text style={styles.text}>Set Timetable</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.button}

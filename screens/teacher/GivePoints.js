@@ -14,7 +14,6 @@ function GivePoints(props) {
   const [amount, setAmount] = useState(0);
   const [snapshot, setSnapshot] = useState(0);
 
-  console.log(props.route);
   return (
     <View style={styles.container}>
       <SafeAreaView
@@ -71,24 +70,27 @@ function GivePoints(props) {
           <TouchableOpacity
             style={{ alignSelf: "center" }}
             onPress={() => {
-              firebase.database().ref(
-                `/${props.route.params.school}/points/${props.route.params.user}`
-              ).on('value',(snapshot)=>{
-                if(snapshot.val()){
-                  setSnapshot(snapshot.val().amount)
-                }
-                else {
-                  setSnapshot(0)
-                }
-              })
+              firebase
+                .database()
+                .ref(
+                  `/${props.route.params.school}/points/${props.route.params.user}`
+                )
+                .on("value", (snapshot) => {
+                  if (snapshot.val()) {
+                    setSnapshot(snapshot.val().amount);
+                  } else {
+                    setSnapshot(0);
+                  }
+                });
               firebase
                 .database()
                 .ref(
                   `/${props.route.params.school}/points/${props.route.params.user}`
                 )
                 .set({
-                  amount: amount+snapshotz,
+                  amount: amount + snapshotz,
                 });
+              props.navigation.navigate("HomeScreen");
             }}
           >
             <Text style={styles.text}>Save Points</Text>

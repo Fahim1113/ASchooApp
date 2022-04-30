@@ -23,7 +23,7 @@ export default class ProfileScreenStudent extends React.Component {
           <Button
             title="register"
             onPress={() => {
-              this.props.navigation.navigate("abc");
+              this.props.navigation.navigate("RegisterScreen");
             }}
           />
         </View>

@@ -5,7 +5,7 @@ import DoAnything from "../screens/teacher/DoAnything";
 import HomeScreen from "../screens/teacher/HomeScreenTeacher";
 import GivePoints from "../screens/teacher/GivePoints";
 import GiveEmail from "../screens/teacher/GiveEmail";
-import GiveHomework from "../screens/teacher/GiveHomework";
+import SetTimetable from "../screens/teacher/SetTimetable";
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -21,7 +21,7 @@ export default class DoAnythingNavigator extends React.Component {
         <Screen name="DoAnything" component={DoAnything} />
         <Screen name="Points" component={GivePoints} />
         <Screen name="Email" component={GiveEmail} />
-        <Screen name="Homework" component={GiveHomework} />
+        <Screen name="SetTimetable" component={SetTimetable} />
       </Navigator>
     );
   }

@@ -1,24 +1,28 @@
 import * as React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
-export default function Timetable({ time, subject, classroom }) {
+export default function Timetable({ subject, classroom }) {
   return (
     <View
       style={{
-        borderWidth: 2,
-        borderColor: "#1232",
-        width: "100%",
-        height: 45
+        backgroundColor: "#8ac1ff",
+        width: "95%",
+        height: 45,
+        alignSelf: "center",
       }}
     >
-      <Text style={[styles.text, {position: "absolute",left:1}]}>{time}</Text>
-      <Text style={[styles.text, { alignSelf:'center'}]}>{subject}</Text>
-      <Text style={[styles.text, { position: "absolute",left:'80%' }]}>{classroom}</Text>
+      <Text style={[styles.text, { position: "absolute", left: "15%" }]}>
+        {subject}
+      </Text>
+      <Text style={[styles.text, { position: "absolute", right: "15%" }]}>
+        {classroom}
+      </Text>
     </View>
   );
 }
 const styles = StyleSheet.create({
   text: {
     fontSize: 25,
+    color: "#fff",
   },
 });
