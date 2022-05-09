@@ -66,6 +66,7 @@ function GiveEmail(props) {
               .set({
                 title: title,
                 body: body,
+                time: time
               });
             props.navigation.navigate("HomeScreen");
           }else{

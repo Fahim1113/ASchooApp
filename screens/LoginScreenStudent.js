@@ -19,7 +19,7 @@ export default class LoginScreenStudent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "E",
+      username: "C",
       password: "a",
       school: "A",
     };
@@ -67,6 +67,7 @@ export default class LoginScreenStudent extends React.Component {
               height: 50,
             }}
           />
+
           <View
             style={{
               width: "100%",
@@ -90,6 +91,7 @@ export default class LoginScreenStudent extends React.Component {
                 textAlign="center"
                 placeholderTextColor="#fff"
               />
+
               <TextInput
                 style={[styles.username, { marginTop: 10 }]}
                 onChangeText={(text) => {
@@ -141,7 +143,9 @@ export default class LoginScreenStudent extends React.Component {
                       }
                       firebase
                         .database()
-                        .ref(`/`+this.state.school+`/s/`+this.state.username)
+                        .ref(
+                          `/` + this.state.school + `/s/` + this.state.username
+                        )
                         .on("value", (snapshot) => {
                           UserName = snapshot.val().username;
                           PassWord = snapshot.val().password;
