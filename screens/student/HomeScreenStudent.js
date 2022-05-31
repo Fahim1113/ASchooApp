@@ -21,14 +21,12 @@ export default function HomeScreenStudent({
   },
   navigation,
 }) {
-  const [timetable, setTimetable] = useState([]);
-  const [emailData, setEmailData] = useState([]);
-  const [emails, setEmails] = useState([]);
+  const [data, setData] = useState({});
+  var amountOfPoints = 0;
+  var email = {};
 
   function fetchData() {
     let a = [];
-    let b = [];
-    let c = [];
     firebase
       .database()
       .ref(`/${school}/timetables/${username}/`)
@@ -36,7 +34,7 @@ export default function HomeScreenStudent({
         if (snapshot.val() === null) {
           a.push({
             key: 0,
-            value: { subject: "No timetable available", classroom: "" },
+            value: { subject: "No timetable", classroom: "" },
           });
         } else {
           Object.keys(snapshot.val()).forEach((data) => {
@@ -47,41 +45,20 @@ export default function HomeScreenStudent({
           });
         }
       });
-    setTimetable(a);
+    // setTimetable(a);
     firebase
       .database()
-      .ref(`/${school}/emails/${username}/`)
-      .on("value", (a) => {
-        b.push(Object.keys(a.val()).sort());
-        console.log(a.val())
-        /* setEmails(() => {
-          let q = [];
-          if (a.val() !== null) {
-            Object.keys(a.val()).forEach((data) => {
-              q.push({
-                key: a.val()[data].time,
-                value: {
-                  body: a.val()[data].body,
-                  title: a.val()[data].title,
-                },
-              });
-            });
-          } else {
-            q.push({
-              key: 0,
-              value: {
-                body: "",
-                title: "You have no emails",
-              },
-            });
-          }
-          return [...q];
-        }); */
+      .ref(`/${school}/points/${username}/`)
+      .on("value", (snapshot) => {
+        if (snapshot.val().amount === null) {
+          amountOfPoints = 0;
+        } else {
+          amountOfPoints = snapshot.val().amount;
+        }
       });
-      setEmailData(b)
-      console.log(emailData)
-      console.log(b)
-    }
+
+    setData({ timetable: a });
+  }
   useEffect(() => {
     fetchData();
   }, []);
@@ -123,6 +100,7 @@ export default function HomeScreenStudent({
             ></View>
           );
         }}
+        style={{ marginTop: 20 }}
       />
     );
   }
@@ -135,15 +113,10 @@ export default function HomeScreenStudent({
       />
       <View style={styles.container}>
         <ScrollView style={styles.scrollView}>
-          <TimeTableProp data={timetable} />
-          {/* <View>
-            <TouchableOpacity
-              disabled={emails[0].value.title === "You have no emails"}
-              style={styles.button}
-            >
-              <Text style={styles.text}>{emails[0].value.title}</Text>
-            </TouchableOpacity>
-          </View> */}
+          <TimeTableProp data={data.timetable} />
+          <View style={[styles.box, { marginTop: 20 }]}>
+            <Text style={styles.text}>Points: {amountOfPoints}</Text>
+          </View>
         </ScrollView>
       </View>
     </View>
@@ -172,6 +145,7 @@ const styles = StyleSheet.create({
     width: "95%",
     backgroundColor: "#8AC1FF",
     borderRadius: 10,
+    alignSelf: "center",
   },
   button: {
     height: 50,
@@ -181,5 +155,6 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 25,
     color: "#fff",
+    alignSelf: "center",
   },
 });

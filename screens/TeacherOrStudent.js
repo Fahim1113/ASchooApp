@@ -63,6 +63,14 @@ export default class TeacherOrStudent extends React.Component {
         >
           <Text style={styles.buttonText}>Register</Text>
         </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => {
+            this.props.navigation.navigate("CreateSchool");
+          }}
+        >
+          <Text style={styles.buttonText}>Add School</Text>
+        </TouchableOpacity>
       </View>
     );
   }

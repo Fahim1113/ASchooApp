@@ -19,9 +19,9 @@ export default class LoginScreenTeacher extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "A",
-      password: "a",
-      school: "A",
+      username: "",
+      password: "",
+      school: ""
     };
   }
   render() {

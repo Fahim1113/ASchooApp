@@ -1,9 +1,10 @@
 import * as React from "react";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import HomeScreenStudent from "../screens/student/HomeScreenStudent";
-import ProfileScreenStudent from "../screens/student/ProfileScreenStudent";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { RFValue } from "react-native-responsive-fontsize";
+import EmailNavigator from "./EmailNavigator";
+import ResetPasswordNavigator from './ResetPasswordNavigator'
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -24,6 +25,8 @@ export default class StudentTabNavigator extends React.Component {
               iconName = focused ? "home" : "home-outline";
             } else if (route.name === "Profile") {
               iconName = focused ? "person" : "person-outline";
+            } else if (route.name === "Email") {
+              iconName = focused ? "file-tray-full" : "file-tray-full-outline";
             }
             return (
               <Ionicons
@@ -48,7 +51,15 @@ export default class StudentTabNavigator extends React.Component {
           initialParams={a}
         />
         <Tab.Screen
-          component={ProfileScreenStudent}
+          component={EmailNavigator}
+          name="Email"
+          options={{
+            tabBarColor: "#03fc77",
+          }}
+          initialParams={a}
+        />
+        <Tab.Screen
+          component={ResetPasswordNavigator}
           name="Profile"
           options={{
             tabBarColor: "#03fc77",

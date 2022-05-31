@@ -9,6 +9,7 @@ import LoginScreenTeacher from "../screens/LoginScreenTeacher";
 import TeacherOrStudent from "../screens/TeacherOrStudent";
 import RegisterScreen from "../screens/RegisterScreen";
 import DoAnythingNavigator from "./DoAnythingNavigator";
+import CreateSchool from "../screens/CreateSchool";
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -27,6 +28,7 @@ export default class MainNavigator extends React.Component {
           <Screen name="StudentHome" component={StudentTabNavigator} />
           <Screen name="TeacherHome" component={TeacherTabNavigator} />
           <Screen name="DoAnythingNavigator" component={DoAnythingNavigator} />
+          <Screen name="CreateSchool" component={CreateSchool} />
         </Navigator>
       </NavigationContainer>
     );

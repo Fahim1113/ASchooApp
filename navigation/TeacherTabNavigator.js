@@ -1,9 +1,9 @@
 import * as React from "react";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
-import ProfileScreen from "../screens/teacher/ProfileScreenTeacher";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { RFValue } from "react-native-responsive-fontsize";
 import DoAnythingNavigator from "./DoAnythingNavigator";
+import ResetPassowrdNavigatorTeacher from "./ResetPasswordNavigatorTeacher";
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -49,7 +49,7 @@ export default class TeacherTabNavigator extends React.Component {
         />
         <Tab.Screen
           name="Profile"
-          component={ProfileScreen}
+          component={ResetPassowrdNavigatorTeacher}
           options={{
             tabBarColor: "#03fc77",
           }}
